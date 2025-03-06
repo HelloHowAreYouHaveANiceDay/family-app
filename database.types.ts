@@ -15,9 +15,9 @@ export type Database = {
           has_pee: boolean | null
           has_poo: boolean | null
           id: number
-          logged_for: number
           notes: string | null
           pee_color: string | null
+          person_id: number
           poo_color: string | null
           poo_texture: string | null
         }
@@ -26,9 +26,9 @@ export type Database = {
           has_pee?: boolean | null
           has_poo?: boolean | null
           id?: number
-          logged_for: number
           notes?: string | null
           pee_color?: string | null
+          person_id: number
           poo_color?: string | null
           poo_texture?: string | null
         }
@@ -37,16 +37,16 @@ export type Database = {
           has_pee?: boolean | null
           has_poo?: boolean | null
           id?: number
-          logged_for?: number
           notes?: string | null
           pee_color?: string | null
+          person_id?: number
           poo_color?: string | null
           poo_texture?: string | null
         }
         Relationships: [
           {
-            foreignKeyName: "babytracker_diapers_logged_for_fkey"
-            columns: ["logged_for"]
+            foreignKeyName: "babytracker_diapers_person_id_fkey"
+            columns: ["person_id"]
             isOneToOne: false
             referencedRelation: "people"
             referencedColumns: ["id"]
@@ -60,8 +60,8 @@ export type Database = {
           end: string | null
           feed_type: string | null
           id: number
-          logged_for: number
           notes: string | null
+          person_id: number
           start: string | null
         }
         Insert: {
@@ -70,8 +70,8 @@ export type Database = {
           end?: string | null
           feed_type?: string | null
           id?: number
-          logged_for: number
           notes?: string | null
+          person_id: number
           start?: string | null
         }
         Update: {
@@ -80,14 +80,14 @@ export type Database = {
           end?: string | null
           feed_type?: string | null
           id?: number
-          logged_for?: number
           notes?: string | null
+          person_id?: number
           start?: string | null
         }
         Relationships: [
           {
-            foreignKeyName: "babytracker_feeds_logged_for_fkey"
-            columns: ["logged_for"]
+            foreignKeyName: "babytracker_feeds_person_id_fkey"
+            columns: ["person_id"]
             isOneToOne: false
             referencedRelation: "people"
             referencedColumns: ["id"]
@@ -96,36 +96,39 @@ export type Database = {
       }
       babytracker_pumping: {
         Row: {
+          amount_ml: number | null
           created_at: string
           end: string | null
           id: number
-          logged_for: number
           notes: string | null
+          person_id: number
           side: string | null
           start: string | null
         }
         Insert: {
+          amount_ml?: number | null
           created_at?: string
           end?: string | null
           id?: number
-          logged_for: number
           notes?: string | null
+          person_id: number
           side?: string | null
           start?: string | null
         }
         Update: {
+          amount_ml?: number | null
           created_at?: string
           end?: string | null
           id?: number
-          logged_for?: number
           notes?: string | null
+          person_id?: number
           side?: string | null
           start?: string | null
         }
         Relationships: [
           {
-            foreignKeyName: "babytracker_pumping_logged_for_fkey"
-            columns: ["logged_for"]
+            foreignKeyName: "babytracker_pumping_person_id_fkey"
+            columns: ["person_id"]
             isOneToOne: false
             referencedRelation: "people"
             referencedColumns: ["id"]
@@ -137,27 +140,30 @@ export type Database = {
           created_at: string
           end_time: string | null
           id: number
-          logged_for: number
+          notes: string | null
+          person_id: number
           start_time: string | null
         }
         Insert: {
           created_at?: string
           end_time?: string | null
           id?: number
-          logged_for: number
+          notes?: string | null
+          person_id: number
           start_time?: string | null
         }
         Update: {
           created_at?: string
           end_time?: string | null
           id?: number
-          logged_for?: number
+          notes?: string | null
+          person_id?: number
           start_time?: string | null
         }
         Relationships: [
           {
-            foreignKeyName: "babytracker_sleep_logged_for_fkey"
-            columns: ["logged_for"]
+            foreignKeyName: "babytracker_sleep_person_id_fkey"
+            columns: ["person_id"]
             isOneToOne: false
             referencedRelation: "babytracker_sleep"
             referencedColumns: ["id"]
