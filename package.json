@@ -7,7 +7,7 @@
     "dev": "vite",
     "build": "tsc -b && vite build",
     "lint": "eslint .",
-    "test": "vitest",
+    "test": "vitest --watch",
     "generate_types": "npx supabase gen types typescript --project-id vqhiysddonombrbnitsy --schema public > database.types.ts",
     "preview": "vite preview"
   },
@@ -25,6 +25,7 @@
     "eslint-plugin-react-hooks": "^5.0.0",
     "eslint-plugin-react-refresh": "^0.4.19",
     "globals": "^15.15.0",
+    "jsdom": "^26.0.0",
     "supabase": "^2.15.8",
     "typescript": "~5.7.2",
     "typescript-eslint": "^8.24.1",
