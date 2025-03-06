@@ -7,6 +7,7 @@
     "dev": "vite",
     "build": "tsc -b && vite build",
     "lint": "eslint .",
+    "test": "vitest",
     "generate_types": "npx supabase gen types typescript --project-id vqhiysddonombrbnitsy --schema public > database.types.ts",
     "preview": "vite preview"
   },
@@ -27,6 +28,7 @@
     "supabase": "^2.15.8",
     "typescript": "~5.7.2",
     "typescript-eslint": "^8.24.1",
-    "vite": "^6.2.0"
+    "vite": "^6.2.0",
+    "vitest": "^3.0.7"
   }
 }
