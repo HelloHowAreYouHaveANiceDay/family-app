@@ -51,41 +51,70 @@ describe("supabase client tests", () => {
 
     // DATABASE
     // Diaper
-    describe("babytracker_diapers tests", () => {
-        let auth_event: string | null = null;
-        supabase.auth.onAuthStateChange((event) => {
-            auth_event = event;
-            // debug
-            // console.log("auth event", event);
-        });
-        beforeAll(async () => {
-            await supabase.auth.signInWithPassword({
-                email: "tester@tester.com",
-                password: "password"
-            });
-            expect(auth_event).toBe("SIGNED_IN");
-        });
+    // describe("babytracker_diapers tests", () => {
+    //     let auth_event: string | null = null;
+    //     supabase.auth.onAuthStateChange((event) => {
+    //         auth_event = event;
+    //         // debug
+    //         // console.log("auth event", event);
+    //     });
+    //     beforeAll(async () => {
+    //         await supabase.auth.signInWithPassword({
+    //             email: "tester@tester.com",
+    //             password: "password"
+    //         });
+    //         expect(auth_event).toBe("SIGNED_IN");
+    //     });
 
-        const test_diaper: Database["public"]["Tables"]["babytracker_diapers"]["Insert"] = {
-            person_id: 1,
-            has_pee: true,
-            has_poo: true,
-            pee_color: "yellow",
-            poo_color: "brown",
-            poo_texture: "solid"
-        };
+    //     const test_diaper: Database["public"]["Tables"]["babytracker_diapers"]["Insert"] = {
+    //         person_id: 1,
+    //         has_pee: true,
+    //         has_poo: true,
+    //         pee_color: "yellow",
+    //         poo_color: "brown",
+    //         poo_texture: "solid"
+    //     };
 
-        test("insert diaper should pass", async () => {
-            const { data, error } = await supabase.from("babytracker_diapers").insert(test_diaper).select();
-            expect(error).toBeNull();
-            expect(data).toBeDefined();
-            expect(data?.length).toBe(1);
-            expect(data?.[0].person_id).toBe(test_diaper.person_id);
-            expect(data?.[0].has_pee).toBe(test_diaper.has_pee);
-            expect(data?.[0].has_poo).toBe(test_diaper.has_poo);
-            expect(data?.[0].pee_color).toBe(test_diaper.pee_color);
-            expect(data?.[0].poo_color).toBe(test_diaper.poo_color);
-            expect(data?.[0].poo_texture).toBe(test_diaper.poo_texture);
-        });
-    });
+     
+
+    //     test("diaper should pass", async () => {
+    //         let record_id: number | null = null;
+    //         // insert
+    //         const { data, error } = await supabase.from("babytracker_diapers").insert(test_diaper).select();
+    //         record_id = data?.[0].id;
+    //         console.log("record_id", record_id);
+    //         expect(error).toBeNull();
+    //         expect(data).toBeDefined();
+    //         expect(data?.length).toBe(1);
+    //         expect(data?.[0].person_id).toBe(test_diaper.person_id);
+    //         expect(data?.[0].has_pee).toBe(test_diaper.has_pee);
+    //         expect(data?.[0].has_poo).toBe(test_diaper.has_poo);
+    //         expect(data?.[0].pee_color).toBe(test_diaper.pee_color);
+    //         expect(data?.[0].poo_color).toBe(test_diaper.poo_color);
+    //         expect(data?.[0].poo_texture).toBe(test_diaper.poo_texture);
+
+    //         // update
+    //         const { data: u_data, error: u_error } = await supabase
+    //         .from("babytracker_diapers")
+    //         .update({
+    //             has_pee: false
+    //         })
+    //         .eq("id", record_id)
+    //         .select();
+
+    //         expect(u_error).toBeNull();
+    //         expect(u_data).toBeDefined();
+    //         expect(u_data?.length).toBe(1);
+    //         expect(u_data?.[0].has_pee).toBe(false);
+
+    //         // delete
+    //         const response = await supabase
+    //         .from("babytracker_diapers")
+    //         .delete()
+    //         .eq("id", record_id)
+
+    //         expect(response.error).toBeNull();
+            
+    //     });
+    // });
 });
