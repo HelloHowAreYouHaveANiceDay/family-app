@@ -1,5 +1,6 @@
 import supabase from "../../client";
 
+// Diapers
 
 type PeeColors = 'Light' | 'Medium' | 'Dark';
 type PooColors = 'Green' | 'Yellow' | 'Brown';
@@ -55,3 +56,6 @@ export const diaperClient = {
         return data || [];
     }
 }
+
+// Feeding
+
