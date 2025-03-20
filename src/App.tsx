@@ -29,27 +29,25 @@ function App() {
   }, [])
 
   return (
-    <div className="container">
+    <div className="">
       {!session ? (
         <Auth />
       ) : (
-        <div className='flex flex-col h-screen'>
+        <div className='flex-none flex flex-col h-screen'>
           <div className='p-2 bg-gray-100'>
             <Account session={session} />
           </div>
 
 
-          <div>
+          <div className='grow'>
             {/* Main */}
             {app === 'home' && <div> Home</div>}
             {app === 'babytracker' && (
-              <div>
                 <BabyTracker />
-              </div>
             )}
           </div>
 
-          <div className='mt-auto p-2 bg-gray-100'>
+          <div className='flex-none mt-auto p-2 bg-gray-100'>
             {/* Nav */}
             {
               app === 'home' ? (

@@ -2,30 +2,25 @@ import supabase from "../../client";
 
 // Diapers
 
-type PeeColors = 'Light' | 'Medium' | 'Dark';
-type PooColors = 'Green' | 'Yellow' | 'Brown';
-type PooTextures = 'Solid' | 'Seedy' | 'Runny' | 'Mucousy';
+type PeeColors = null | 'Light' | 'Medium' | 'Dark';
+type PooColors = null | 'Green' | 'Yellow' | 'Brown';
+type PooTextures = null | 'Solid' | 'Seedy' | 'Runny' | 'Mucousy';
 
 interface Record {
     id?: number;
     user_id?: number;
     person_id: number;
     created_at?: string;
+    notes?: string;
 }
 
-interface BaseDiaper extends Record {
+export interface DiaperRecord extends Record {
     has_pee?: boolean;
     has_poo?: boolean;
     pee_color?: PeeColors;
     poo_color?: PooColors;
     poo_texture?: PooTextures;
 }
-
-export type DiaperRecord = 
-    | (BaseDiaper & { has_pee: true; pee_color: PeeColors })
-    | (BaseDiaper & { has_poo: true; poo_color: PooColors; poo_texture: PooTextures })
-    | (BaseDiaper & { has_pee: true; has_poo: true; pee_color: PeeColors; poo_color: PooColors; poo_texture: PooTextures });
-
 
 export const diaperClient = {
     async insert(diaper: DiaperRecord): Promise<DiaperRecord> {

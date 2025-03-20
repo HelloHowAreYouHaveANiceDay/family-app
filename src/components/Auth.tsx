@@ -36,11 +36,10 @@ export default function Auth() {
   }
 
   return (
-    <div className="auth-container">
-      <h1>{authMode === 'sign_in' ? 'Sign In' : 'Sign Up'}</h1>
+    <div className="flex flex-col items-center justify-center h-screen bg-gray-100">
       <form onSubmit={handleAuth} className="auth-form">
-        <div>
-          <label htmlFor="email">Email</label>
+        <div className="mb-4 w-full max-w-xs">
+          <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-1">Email</label>
           <input
             id="email"
             type="email"
@@ -48,10 +47,11 @@ export default function Auth() {
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             required
+            className="w-full px-3 py-2 border border-gray-300 focus:outline-none focus:ring-blue-500 focus:border-blue-500"
           />
         </div>
-        <div>
-          <label htmlFor="password">Password</label>
+        <div className="mb-4 w-full max-w-xs">
+          <label htmlFor="password" className="block text-sm font-medium text-gray-700 mb-1">Password</label>
           <input
             id="password"
             type="password"
@@ -59,39 +59,14 @@ export default function Auth() {
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             required
+            className="w-full px-3 py-2 border border-gray-300 focus:outline-none focus:ring-blue-500 focus:border-blue-500"
           />
         </div>
-        
-        <button type="submit" disabled={loading}>
-          {loading ? 'Loading...' : authMode === 'sign_in' ? 'Sign In' : 'Sign Up'}
-        </button>
-        
-        <p>
-          {authMode === 'sign_in' ? (
-            <>
-              Don't have an account?{' '}
-              <button 
-                type="button" 
-                className="link-button" 
-                onClick={() => setAuthMode('sign_up')}
-              >
-                Sign Up
-              </button>
-            </>
-          ) : (
-            <>
-              Already have an account?{' '}
-              <button 
-                type="button" 
-                className="link-button" 
-                onClick={() => setAuthMode('sign_in')}
-              >
-                Sign In
-              </button>
-            </>
-          )}
-        </p>
-        
+        <div className="flex justify-center w-full mt-4">
+          <button type="submit" className='bg-blue-200 px-2 py-1' disabled={loading}>
+            {loading ? 'Loading...' : authMode === 'sign_in' ? 'Sign In' : 'Sign Up'}
+          </button>
+        </div>
         {message && <p className="message">{message}</p>}
       </form>
     </div>
