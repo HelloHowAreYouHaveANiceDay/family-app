@@ -10,6 +10,7 @@ const formatDateForInput = (date: Date) => {
 const BabyTracker: React.FC = () => {
     const [activeForm, setActiveForm] = React.useState<null | 'diapers' | 'feeding'>(null);
 
+    // TODO: make person_id dynamic
     const [diaperRecord, setDiaperRecord] = React.useState<DiaperRecord>({
         person_id: 1, // Fenn is numba 1
         created_at: new Date().toISOString(),
@@ -85,7 +86,7 @@ const BabyTracker: React.FC = () => {
                                 <div className="flex gap-4">
                                     <button
                                         type="button"
-                                        className={`px-4 py-2 border rounded flex-1 ${diaperRecord?.has_pee ? 'bg-blue-500 text-white' : 'bg-white'}`}
+                                        className={`px-4 py-2 border flex-1 ${diaperRecord?.has_pee ? 'bg-black text-white' : 'bg-white'}`}
                                         onClick={() => setDiaperRecord({
                                             ...(diaperRecord || { person_id: 1 }),
                                             has_pee: !diaperRecord?.has_pee,
@@ -97,7 +98,7 @@ const BabyTracker: React.FC = () => {
                                     
                                     <button
                                         type="button"
-                                        className={`px-4 py-2 border rounded flex-1 ${diaperRecord?.has_poo ? 'bg-blue-500 text-white' : 'bg-white'}`}
+                                        className={`px-4 py-2 border flex-1 ${diaperRecord?.has_poo ? 'bg-black text-white' : 'bg-white'}`}
                                         onClick={() => setDiaperRecord({
                                             ...(diaperRecord || { person_id: 1 }),
                                             has_poo: !diaperRecord?.has_poo,
@@ -118,7 +119,7 @@ const BabyTracker: React.FC = () => {
                                             <button
                                                 key={color}
                                                 type="button"
-                                                className={`px-3 py-1 border rounded ${diaperRecord?.pee_color === color ? 'bg-blue-500 text-white' : 'bg-white'}`}
+                                                className={`px-3 py-1 border ${diaperRecord?.pee_color === color ? 'bg-black text-white' : 'bg-white'}`}
                                                 onClick={() => setDiaperRecord({
                                                     ...(diaperRecord || { person_id: 1 }),
                                                     pee_color: color as DiaperRecord['pee_color']
@@ -139,7 +140,7 @@ const BabyTracker: React.FC = () => {
                                             <button
                                                 key={color}
                                                 type="button"
-                                                className={`px-3 py-1 border rounded ${diaperRecord?.poo_color === color ? 'bg-blue-500 text-white' : 'bg-white'}`}
+                                                className={`px-3 py-1 border ${diaperRecord?.poo_color === color ? 'bg-black text-white' : 'bg-white'}`}
                                                 onClick={() => setDiaperRecord({
                                                     ...(diaperRecord || { person_id: 1 }),
                                                     poo_color: color as DiaperRecord['poo_color']
@@ -156,7 +157,7 @@ const BabyTracker: React.FC = () => {
                                             <button
                                                 key={texture}
                                                 type="button"
-                                                className={`px-3 py-1 border rounded ${diaperRecord?.poo_texture === texture ? 'bg-blue-500 text-white' : 'bg-white'}`}
+                                                className={`px-3 py-1 border ${diaperRecord?.poo_texture === texture ? 'bg-black text-white' : 'bg-white'}`}
                                                 onClick={() => setDiaperRecord({
                                                     ...(diaperRecord || { person_id: 1 }),
                                                     poo_texture: texture as DiaperRecord['poo_texture']
@@ -177,7 +178,7 @@ const BabyTracker: React.FC = () => {
                                 
                                 <button
                                     type="submit"
-                                    className="px-4 py-2 bg-blue-500 text-white rounded"
+                                    className="px-4 py-2 bg-black text-white"
                                     disabled={!diaperRecord}
                                 >
                                     Save
