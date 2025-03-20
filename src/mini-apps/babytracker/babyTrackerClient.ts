@@ -57,4 +57,9 @@ export const diaperClient = {
     }
 }
 
+
+export default  {
+    diaperClient,
+}
+
 // Feeding

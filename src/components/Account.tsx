@@ -39,16 +39,11 @@ export default function Account({ session }: AccountProps) {
   }
   
   return (
-    <div className="account-container">
-      <h1>Account</h1>
-      <div className="profile">
-        <p><strong>Email:</strong> {session.user.email}</p>
-        {username && <p><strong>Username:</strong> {username}</p>}
-        
-        <button onClick={handleSignOut} className="signout-button">
+    <div className="flex flex-row">
+        <p className='basis-2/3 self-center px-2'>{session.user.email}</p>
+        <button onClick={handleSignOut} className="basis-1/3 bg-red-400 text-white px-2 py-1">
           Sign Out
         </button>
-      </div>
     </div>
   )
 }

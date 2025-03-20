@@ -3,8 +3,10 @@ import { supabase } from './client'
 import { Session } from '@supabase/supabase-js'
 import Auth from './components/Auth'
 import Account from './components/Account'
-import BabyTracker from './mini-apps/babytracker/BabyTrackerClient'
+import BabyTracker from './mini-apps/babytracker/BabyTracker'
 import './App.css'
+
+import { BellSnoozeIcon, HomeIcon, HomeModernIcon } from '@heroicons/react/20/solid'
 
 function App() {
   const [session, setSession] = useState<Session | null>(null)
@@ -31,22 +33,47 @@ function App() {
       {!session ? (
         <Auth />
       ) : (
-        <div>
-
-          <button onClick={() => setApp('home')}>Home</button>
-          <button onClick={() => setApp('babytracker')}>Baby Tracker</button>
-          <div>
+        <div className='flex flex-col h-screen'>
+          <div className='p-2 bg-gray-100'>
             <Account session={session} />
           </div>
 
-          {app === 'home' && <div>Home</div>}
-          {app === 'babytracker' && (
-            <div>
-              <h1>Baby Tracker</h1>
-              <BabyTracker />
-            </div>
-          )}
 
+          <div>
+            {/* Main */}
+            {app === 'home' && <div> Home</div>}
+            {app === 'babytracker' && (
+              <div>
+                <BabyTracker />
+              </div>
+            )}
+          </div>
+
+          <div className='mt-auto p-2 bg-gray-100'>
+            {/* Nav */}
+            {
+              app === 'home' ? (
+                <button className='p-2 m-1 bg-black' onClick={() => setApp('home')}>
+                  <HomeIcon className='h-6 w-6 text-white'></HomeIcon>
+                </button>
+              ) : (
+                <button className='p-2 m-1 border' onClick={() => setApp('home')}>
+                  <HomeIcon className='h-6 w-6 text-black'></HomeIcon>
+                </button>
+              )
+            }
+            {
+              app === 'babytracker' ? (
+                <button className='p-2 m-1 bg-black' onClick={() => setApp('babytracker')}>
+                  <BellSnoozeIcon className='h-6 w-6 text-white'></BellSnoozeIcon>
+                </button>
+              ) : (
+                <button className='p-2 m-1 border' onClick={() => setApp('babytracker')}>
+                  <BellSnoozeIcon className='h-6 w-6 text-black'></BellSnoozeIcon>
+                </button>
+              )
+            }
+          </div>
         </div>
       )}
     </div>
